@@ -27,13 +27,13 @@ exporter = metrics_exporter.new_metrics_exporter(enable_standard_metrics=True, c
 
 # Tracing
 azure_exporter = AzureExporter(connection_string=app_insights_ctr)
-tracer = Tracer(exporter=azure_exporter, sampler=ProbabilitySampler(1,0))
+tracer = Tracer(exporter=azure_exporter, sampler=ProbabilitySampler(1.0))
 
 app = Flask(__name__)
 
 # Requests
 # middleware = # TODO: Setup flask middleware
-middleware = FlaskMiddleware(app, exporter=azure_exporter, sampler=ProbabilitySampler(1,0))
+middleware = FlaskMiddleware(app, exporter=azure_exporter, sampler=ProbabilitySampler(10))
 
 # Load configurations from environment or config file
 app.config.from_pyfile('config_file.cfg')
