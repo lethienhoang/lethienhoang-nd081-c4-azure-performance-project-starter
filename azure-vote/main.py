@@ -33,7 +33,7 @@ app = Flask(__name__)
 
 # Requests
 # middleware = # TODO: Setup flask middleware
-middleware = FlaskMiddleware(app, exporter=azure_exporter, sampler=ProbabilitySampler(10))
+middleware = FlaskMiddleware(app, exporter=azure_exporter, sampler=ProbabilitySampler(1.0))
 
 # Load configurations from environment or config file
 app.config.from_pyfile('config_file.cfg')
